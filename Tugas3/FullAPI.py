@@ -18,6 +18,8 @@ def main():
         with st.sidebar:
             st.header("Settings Area")
             st.checkbox("Use container width", value=False, key="use_container_width") 
+            title = st.text_input('Movie title', 'Life of Brian')
+            st.write(title)
             data_option = st.multiselect(
 
                 'Select the area you want',
@@ -32,15 +34,6 @@ def main():
         st.dataframe(data_chart, use_container_width=st.session_state.use_container_width)
         st.line_chart(data_chart, x='TAHUN', y=data_option)
         st.experimental_show(data_chart)
+        st.stop()
 
-with placeholder.form("login"):
-        st.markdown("#### Enter your credentials")
-        email = st.text_input("Email")
-        password = st.text_input("Password", type="password")
-        submit = st.form_submit_button("Login")
-        if submit and email == actual_email and password == actual_password:
-            placeholder.empty()
-            with placeholder.container():
-                 main()
-        elif submit and email != actual_email and password != actual_password:
-            st.error("Login failed")
+main()
